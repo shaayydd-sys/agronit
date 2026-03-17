@@ -172,7 +172,7 @@ const Home = () => {
 
             {/* Bento 2: Focus Text (Square) */}
             <div className="bento-card bento-element md:col-span-1 lg:col-span-1 md:row-span-1 bg-cream flex flex-col justify-center items-center text-center group border border-sage/20 relative">
-                <div className="font-garamond italic text-3xl lg:text-4xl text-forest leading-tight mb-6">
+                <div className="font-garamond italic text-3xl lg:text-4xl text-forest leading-tight">
                     "We don't move volume. We build supply chains that last."
                 </div>
                 <div className="absolute bottom-10 right-10 opacity-0 group-hover:opacity-100 transition-opacity">
