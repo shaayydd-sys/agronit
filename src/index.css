@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,700;1,300;1,700&family=DM+Sans:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --forest: #1A2517;
+    --sage: #ACC8A2;
+    --gold: #E9C984;
+    --white: #FFFFFF;
+    --cream: #F5F2EB;
+    --ink: #111111;
+  }
+
+  body {
+    @apply font-sans bg-[#EFF0F1] text-forest overflow-x-hidden pt-0 m-0 min-h-screen p-4 md:p-6 lg:p-8;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-tightest;
+  }
+}
+
+@layer components {
+  .btn {
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 36px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1.5px solid currentColor;
+    cursor: pointer;
+    transition: color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.3s ease;
+    z-index: 0;
+    border-radius: 2px;
+  }
+
+  .btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateY(101%);
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: -1;
+  }
+
+  .btn:hover::before {
+    transform: translateY(0);
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  /* Outline Variants */
+  .btn-outline-white {
+    color: var(--white);
+    border-color: var(--white);
+  }
+
+  .btn-outline-white::before {
+    background-color: var(--white);
+  }
+
+  .btn-outline-white:hover {
+    color: var(--forest);
+  }
+
+  .btn-outline-forest {
+    color: var(--forest);
+    border-color: var(--forest);
+  }
+
+  .btn-outline-forest::before {
+    background-color: var(--forest);
+  }
+
+  .btn-outline-forest:hover {
+    color: var(--white);
+    border-color: var(--forest);
+  }
+
+  /* Variant — .btn-filled */
+  .btn-filled {
+    background-color: var(--gold);
+    color: var(--forest);
+    border-color: var(--gold);
+  }
+
+  .btn-filled::before {
+    background-color: var(--forest);
+  }
+
+  .btn-filled:hover {
+    border-color: var(--sage);
+    color: var(--sage);
+  }
+
+  /* Nav Links */
+  .nav-link {
+    position: relative;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--forest);
+    transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), background 0.2s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .nav-link.active::after {
+    width: 100%;
+    background: var(--gold);
+  }
+
+  /* Cards (Product, Feature, Value) */
+  .card {
+    border-radius: 4px;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(26, 37, 23, 0.12);
+  }
+
+  .tag {
+    border-radius: 2px;
+  }
+
+  /* Bento Cards */
+  .bento-card {
+    @apply relative overflow-hidden bg-white rounded-[32px] md:rounded-[40px] p-8 md:p-12 transition-shadow duration-500 ease-out;
+    box-shadow: none;
+    will-change: transform;
+  }
+
+  .bento-card:hover {
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+  }
+
+  .bento-card.dark-card:hover {
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  }
+
+  /* Shine light effect — follows mouse via CSS vars --mx/--my */
+  .bento-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background: radial-gradient(
+      circle at var(--mx, 50%) var(--my, 50%),
+      rgba(255, 255, 255, 0.14) 0%,
+      transparent 55%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 10;
+  }
+
+  .bento-card:hover::after {
+    opacity: 0;
+  }
+
+  /* Product card tilt class */
+  .tilt-card {
+    will-change: transform;
+    box-shadow: none;
+    transition: box-shadow 0.5s ease-out;
+  }
+
+  .tilt-card:hover {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+  }
+
+  .tilt-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background: radial-gradient(
+      circle at var(--mx, 50%) var(--my, 50%),
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 55%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 10;
+  }
+
+  .tilt-card:hover::after {
+    opacity: 1;
+  }
+}
+
+/* GSAP utility class to start hidden before animation kicks in */
+.gsap-reveal {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+/* Advantage cards — icon float on hover */
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+
+.advantage-card:hover .icon-float {
+  animation: iconFloat 0.65s ease-in-out;
+}
