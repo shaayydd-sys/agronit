@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, Mail, Phone, MapPin, Clock } from 'lucide-react';
@@ -15,14 +15,16 @@ const Contacts = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
         const ctx = gsap.context(() => {
-            gsap.fromTo('.bento-element',
-                { opacity: 0, y: 40, scale: 0.98 },
-                {
-                    opacity: 1, y: 0, scale: 1,
-                    duration: 0.8, stagger: 0.08, ease: 'power3.out',
-                    scrollTrigger: { trigger: gridRef.current, start: 'top 90%' }
-                }
-            );
+            gridRef.current.querySelectorAll('.bento-element').forEach((el) => {
+                gsap.fromTo(el,
+                    { opacity: 0, y: 40, scale: 0.98 },
+                    {
+                        opacity: 1, y: 0, scale: 1,
+                        duration: 0.8, ease: 'power3.out',
+                        scrollTrigger: { trigger: el, start: 'top 90%', once: true }
+                    }
+                );
+            });
         }, gridRef);
 
         // 3D tilt + shine
@@ -76,7 +78,7 @@ const Contacts = () => {
                         Get in Touch
                     </div>
                     <div>
-                        <h1 className="font-garamond italic font-bold text-5xl md:text-6xl text-sage leading-tight mb-4">
+                        <h1 className="font-garamond italic font-bold text-4xl sm:text-5xl md:text-6xl text-sage leading-tight mb-4">
                             Contact<br />the Desk
                         </h1>
                         <p className="font-sans text-sm text-white/55 leading-relaxed max-w-sm">
@@ -94,8 +96,8 @@ const Contacts = () => {
                         <div className="font-mono text-[10px] text-forest/40 uppercase tracking-widest mb-3">Registered Office</div>
                         <div className="font-sans text-sm font-medium text-forest leading-relaxed">
                             AGRONIT TRADING FZCO<br />
-                            Dubai Multi Commodities<br />
-                            Centre (DMCC)<br />
+                            Unit 2208, GBC2<br />
+                            Jumeirah Lakes Towers (JLT), DMCC<br />
                             Dubai, UAE
                         </div>
                     </div>
@@ -113,13 +115,13 @@ const Contacts = () => {
                         </div>
                         <div className="w-full h-px bg-forest/8"></div>
                         <div className="flex flex-col gap-2">
-                            <a href="tel:+971000000000" className="flex items-center gap-2 font-sans text-sm text-forest/70 hover:text-forest transition-colors group/link">
+                            <a href="https://wa.me/971542016446" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-sans text-sm text-forest/70 hover:text-gold transition-colors group/link">
                                 <Phone className="w-3.5 h-3.5" />
-                                +971 00 000 0000
+                                +971 54 201 6446
                             </a>
-                            <a href="mailto:info@agronit.com" className="flex items-center gap-2 font-sans text-sm text-forest/70 hover:text-forest transition-colors group/link">
+                            <a href="mailto:info@agronittrade.com" className="flex items-center gap-2 font-sans text-sm text-forest/70 hover:text-gold transition-colors group/link">
                                 <Mail className="w-3.5 h-3.5" />
-                                info@agronit.com
+                                info@agronittrade.com
                             </a>
                         </div>
                     </div>
@@ -185,7 +187,7 @@ const Contacts = () => {
                 </div>
 
                 {/* Map / location card */}
-                <div className="bento-card bento-element bg-cream border border-sage/20 flex flex-col justify-between min-h-[400px] !p-0">
+                <div className="bento-card bento-element bg-cream border border-sage/20 flex flex-col justify-between min-h-[300px] md:min-h-[400px] !p-0">
                     {/* OpenStreetMap iframe with forest-green filter */}
                     <div className="absolute inset-0 rounded-[inherit] overflow-hidden">
                         <img
@@ -212,7 +214,7 @@ const Contacts = () => {
                             </div>
                         </div>
                         <div className="text-center">
-                            <div className="font-mono text-xs text-forest uppercase tracking-widest mb-1">DMCC Free Zone</div>
+                            <div className="font-mono text-xs text-forest uppercase tracking-widest mb-1">JLT, DMCC</div>
                             <div className="font-sans text-sm text-forest/50">Dubai, UAE</div>
                         </div>
                     </div>

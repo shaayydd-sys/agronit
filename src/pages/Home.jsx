@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowUpRight, Globe2, MapPin, Package, Truck, TrendingDown, ShieldCheck, Headphones } from 'lucide-react';
+import { ArrowUpRight, Globe2, Package, Truck, TrendingDown, ShieldCheck, Headphones } from 'lucide-react';
 import heroBg from '../assets/hero-port.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -67,21 +67,16 @@ const Home = () => {
         window.scrollTo(0, 0);
 
         const ctx = gsap.context(() => {
-            gsap.fromTo('.bento-element',
-                { opacity: 0, y: 40, scale: 0.98 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    duration: 0.8,
-                    stagger: 0.1,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: gridRef.current,
-                        start: 'top 90%',
+            gridRef.current.querySelectorAll('.bento-element').forEach((el) => {
+                gsap.fromTo(el,
+                    { opacity: 0, y: 40, scale: 0.98 },
+                    {
+                        opacity: 1, y: 0, scale: 1,
+                        duration: 0.8, ease: 'power3.out',
+                        scrollTrigger: { trigger: el, start: 'top 90%', once: true }
                     }
-                }
-            );
+                );
+            });
 
             // Animated number counters
             gridRef.current.querySelectorAll('.stat-num').forEach(el => {
@@ -143,10 +138,10 @@ const Home = () => {
 
     return (
         <div ref={gridRef} className="w-full max-w-[1500px] mx-auto flex flex-col gap-4 md:gap-6 lg:gap-8 pt-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-[250px] gap-4 md:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:auto-rows-[250px] gap-4 md:gap-6 lg:gap-8">
 
             {/* Bento 1: Main Hero (Large) span-2 column, span-2 row */}
-            <div className="bento-card dark-card bento-element md:col-span-2 lg:col-span-2 md:row-span-2 !bg-forest text-white flex flex-col justify-end p-8 md:p-12 relative group cursor-pointer border-none">
+            <div className="bento-card dark-card bento-element md:col-span-2 lg:col-span-2 md:row-span-2 !bg-forest text-white flex flex-col justify-between relative group cursor-pointer border-none min-h-[340px] md:min-h-0">
                 <div className="absolute inset-0 z-0">
                     <img
                         src={heroBg}
@@ -155,11 +150,11 @@ const Home = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/80 to-transparent"></div>
                 </div>
-                <div className="relative z-10 mt-auto">
-                    <div className="font-mono text-xs text-sage tracking-widest mb-4 uppercase">DMCC Free Zone — Dubai</div>
-                    <h1 className="font-sans font-bold text-4xl md:text-5xl lg:text-6xl text-white leading-[1.05] mb-1">Global Supply</h1>
-                    <h1 className="font-garamond italic font-bold text-4xl md:text-5xl lg:text-[72px] text-sage leading-[1.05] mb-1">of Industrial &</h1>
-                    <h1 className="font-sans font-bold text-4xl md:text-5xl lg:text-6xl text-white leading-[1.05] mb-6">Specialty Chemicals</h1>
+                <div className="relative z-10 font-mono text-[10px] text-white/70 uppercase tracking-widest border border-white/30 rounded-full px-3 py-1 self-start inline-block">DMCC Free Zone — Dubai</div>
+                <div className="relative z-10">
+                    <h1 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.05] mb-1">Global Supply</h1>
+                    <h1 className="font-garamond italic font-bold text-3xl sm:text-4xl md:text-5xl lg:text-[72px] text-sage leading-[1.05] mb-1">of Industrial &</h1>
+                    <h1 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.05] mb-6">Specialty Chemicals</h1>
 
                     <a href="#products" className="inline-flex items-center gap-2 group-hover:gap-4 transition-all duration-300">
                         <span className="font-mono text-xs uppercase tracking-widest text-white border-b border-transparent group-hover:border-sage group-hover:text-sage transition-colors pb-1">Explore Offerings</span>
@@ -171,7 +166,7 @@ const Home = () => {
             </div>
 
             {/* Bento 2: Focus Text (Square) */}
-            <div className="bento-card bento-element md:col-span-1 lg:col-span-1 md:row-span-1 bg-cream flex flex-col justify-center items-center text-center group border border-sage/20 relative">
+            <div className="bento-card bento-element md:col-span-1 lg:col-span-1 md:row-span-1 bg-cream flex flex-col justify-center items-center text-center group border border-sage/20 relative min-h-[280px] md:min-h-0">
                 <div className="font-garamond italic text-3xl lg:text-4xl text-forest leading-tight">
                     "We don't move volume. We build supply chains that last."
                 </div>
@@ -181,18 +176,18 @@ const Home = () => {
             </div>
 
             {/* Bento 3: Products Visual (Tall) */}
-            <div className="bento-card bento-element md:col-span-1 lg:col-span-1 md:row-span-2 bg-[#E9C984] text-forest flex flex-col justify-between overflow-hidden relative group cursor-pointer border-none" onClick={() => window.location.hash = '#products'}>
+            <div className="bento-card bento-element md:col-span-1 lg:col-span-1 md:row-span-2 bg-[#E9C984] text-forest flex flex-col justify-between overflow-hidden relative group cursor-pointer border-none min-h-[280px] md:min-h-0" onClick={() => window.location.hash = '#products'}>
                 <div className="absolute inset-0 z-0">
                     <div className="w-[150%] h-[150%] absolute -top-1/4 -right-1/4 bg-white/20 rounded-full blur-3xl group-hover:bg-white/40 transition-colors duration-700"></div>
                 </div>
 
-                <div className="relative z-10 w-full flex justify-end">
-                    <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center transition-transform duration-500 group-hover:rotate-45 shadow-sm">
+                <div className="relative z-10 w-full flex items-start justify-between">
+                    <div className="font-mono text-[10px] text-forest/70 uppercase tracking-widest border border-forest/20 rounded-full px-3 py-1 bg-white/30 backdrop-blur-sm">Our Capabilities Deck</div>
+                    <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center transition-transform duration-500 group-hover:rotate-45 shadow-sm shrink-0">
                         <ArrowUpRight className="w-6 h-6 text-forest" />
                     </div>
                 </div>
-                <div className="relative z-10 w-full pt-20">
-                    <div className="font-mono text-[10px] text-forest/70 uppercase tracking-widest mb-3 border border-forest/20 rounded-full px-3 py-1 self-start inline-block bg-white/30 backdrop-blur-sm">Our Capabilities Deck</div>
+                <div className="relative z-10 w-full">
                     <h3 className="font-sans font-bold text-3xl md:text-4xl leading-tight mb-4 text-forest">Discover Outbound Trading</h3>
                     <p className="font-sans text-sm md:text-base opacity-90 leading-relaxed font-medium">Extensive catalogue covering bulk fertilizers to complex petrochemical derivatives.</p>
                 </div>
@@ -201,7 +196,7 @@ const Home = () => {
             {/* Bento 4: Reach (Wide/Square) */}
             <div className="bento-card bento-element md:col-span-2 lg:col-span-1 md:row-span-1 bg-white flex flex-col justify-between group border border-black/5 hover:border-sage/30">
                 <div className="flex justify-between items-start mb-4">
-                    <span className="font-mono text-[10px] text-sage/70 uppercase tracking-widest border border-sage/20 rounded-full px-3 py-1">Global Sourcing</span>
+                    <span className="font-mono text-[10px] text-forest/50 uppercase tracking-widest border border-forest/15 rounded-full px-3 py-1">Global Sourcing</span>
                     <Globe2 className="w-6 h-6 text-sage" />
                 </div>
 
@@ -219,21 +214,21 @@ const Home = () => {
             </div>
 
             {/* Bento 5: Full-Scale Features */}
-            <div className="bento-card dark-card bento-element md:col-span-2 lg:col-span-2 md:row-span-1 !bg-[#1A2517] text-white flex flex-col justify-center border-none">
+            <div className="bento-card dark-card bento-element md:col-span-2 lg:col-span-2 md:row-span-1 !bg-[#1A2517] text-white flex flex-col justify-end border-none min-h-[280px] md:min-h-0">
                 <h3 className="font-sans font-bold text-3xl md:text-4xl mb-2 text-white">Full-Scale Features</h3>
                 <p className="font-sans text-sm md:text-base text-white/70 max-w-xs">From multimodal transport structuring to flexible credit solutions.</p>
             </div>
 
             {/* Bento 6: CTA (Wide) */}
-            <div className="bento-card bento-element md:col-span-2 lg:col-span-2 md:row-span-1 bg-cream flex flex-col md:flex-row justify-between items-center text-center md:text-left border border-sage/20 p-8 md:p-12 overflow-hidden relative">
+            <div className="bento-card bento-element md:col-span-2 lg:col-span-2 md:row-span-1 bg-cream flex flex-col md:flex-row justify-between items-center text-center md:text-left border border-sage/20 overflow-hidden relative">
                 <div className="absolute right-0 bottom-0 pointer-events-none w-64 h-64 bg-gold/10 rounded-full blur-[80px]"></div>
 
-                <h3 className="font-garamond italic font-bold text-4xl md:text-5xl text-forest mb-6 md:mb-0 relative z-10">
+                <h3 className="font-garamond italic font-bold text-3xl sm:text-4xl md:text-5xl text-forest mb-6 md:mb-0 relative z-10">
                     Ready to build<br />your supply chain?
                 </h3>
 
                 <div className="relative z-10">
-                    <a href="#contacts" className="btn btn-filled !bg-forest !text-white !border-forest hover:bg-forest hover:text-gold shadow-xl !rounded-[100px]">
+                    <a href="#contacts" className="btn text-forest border-forest hover:bg-forest hover:text-white rounded-[100px] px-6 py-2 transition-colors">
                         Contact the Desk
                     </a>
                 </div>
@@ -245,14 +240,14 @@ const Home = () => {
         <div className="flex flex-col gap-4 md:gap-6 lg:gap-8">
 
             {/* Section header */}
-            <div className="bento-card dark-card bento-element !bg-forest text-white border-none flex flex-col md:flex-row md:items-end justify-between gap-4 !py-8 !px-10 md:!py-10 md:!px-12">
+            <div className="bento-card dark-card bento-element !bg-forest text-white border-none flex flex-col justify-between min-h-[280px] md:min-h-0">
+                <div className="font-mono text-[10px] text-sage/80 uppercase tracking-widest border border-sage/30 rounded-full px-3 py-1 self-start inline-block">Why Choose Us</div>
                 <div>
-                    <div className="font-mono text-[10px] text-sage/60 uppercase tracking-widest mb-3">Why Choose Us</div>
-                    <h2 className="font-sans font-bold text-4xl md:text-5xl text-white leading-tight">Our Advantages</h2>
+                    <h2 className="font-sans font-bold text-4xl md:text-5xl text-white leading-tight mb-3">Our Advantages</h2>
+                    <p className="font-sans text-sm text-white/50 max-w-xs leading-relaxed">
+                        Six pillars that set AGRONIT apart in the global commodity trade arena.
+                    </p>
                 </div>
-                <p className="font-sans text-sm text-white/50 max-w-xs leading-relaxed">
-                    Six pillars that set AGRONIT apart in the global commodity trade arena.
-                </p>
             </div>
 
             {/* 3×2 advantage cards */}

@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import sabareeshImg from '../assets/sabareesh.jpeg';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight } from 'lucide-react';
@@ -15,7 +16,7 @@ const values = [
 ];
 
 const milestones = [
-    { year: "January 2026", title: "Incorporated", desc: "AGRONIT TRADING FZCO officially registered in the DMCC format." },
+    { year: "January 2026", title: "Incorporated", desc: "AGRONIT TRADING FZCO officially registered in the DMCC format.", license: "License No. DMCC-1007790" },
     { year: "Q1 2026", title: "First Contracts", desc: "Initiation of trial bulk shipments into the East African corridor." },
     { year: "2026 Target", title: "$120M+ Turnover", desc: "Projected benchmark for Year 1 scale across 5 core product lines." },
 ];
@@ -26,14 +27,16 @@ const About = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
         const ctx = gsap.context(() => {
-            gsap.fromTo('.bento-element',
-                { opacity: 0, y: 40, scale: 0.98 },
-                {
-                    opacity: 1, y: 0, scale: 1,
-                    duration: 0.8, stagger: 0.08, ease: 'power3.out',
-                    scrollTrigger: { trigger: gridRef.current, start: 'top 90%' }
-                }
-            );
+            gridRef.current.querySelectorAll('.bento-element').forEach((el) => {
+                gsap.fromTo(el,
+                    { opacity: 0, y: 40, scale: 0.98 },
+                    {
+                        opacity: 1, y: 0, scale: 1,
+                        duration: 0.8, ease: 'power3.out',
+                        scrollTrigger: { trigger: el, start: 'top 90%', once: true }
+                    }
+                );
+            });
         }, gridRef);
 
         // 3D tilt + shine
@@ -77,12 +80,12 @@ const About = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
 
                 {/* Hero Card */}
-                <div className="bento-card dark-card bento-element !bg-forest text-white lg:col-span-2 flex flex-col justify-between min-h-[320px] border-none">
+                <div className="bento-card dark-card bento-element !bg-forest text-white lg:col-span-2 flex flex-col justify-between min-h-[340px] border-none">
                     <div className="font-mono text-[10px] text-sage/60 uppercase tracking-widest border border-sage/20 rounded-full px-3 py-1 self-start">
                         About AGRONIT
                     </div>
                     <div>
-                        <h1 className="font-garamond italic font-bold text-5xl md:text-6xl text-sage leading-tight mb-4">
+                        <h1 className="font-garamond italic font-bold text-4xl sm:text-5xl md:text-6xl text-sage leading-tight mb-4">
                             Who We Are
                         </h1>
                         <p className="font-sans text-sm text-white/60 leading-relaxed max-w-sm">
@@ -92,7 +95,7 @@ const About = () => {
                 </div>
 
                 {/* Dubai image card */}
-                <div className="bento-card bento-element lg:col-span-2 !p-0 overflow-hidden min-h-[320px] border-none">
+                <div className="bento-card bento-element lg:col-span-2 !p-0 overflow-hidden min-h-[340px] border-none">
                     <img
                         src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop"
                         alt="Dubai Skyline"
@@ -105,11 +108,11 @@ const About = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
 
                 {/* Story card */}
-                <div className="bento-card bento-element bg-cream border border-sage/20 lg:col-span-2 flex flex-col justify-center gap-6">
+                <div className="bento-card bento-element bg-cream border border-sage/20 lg:col-span-2 flex flex-col justify-center gap-4 md:gap-6">
                     <div className="font-mono text-[10px] text-forest/50 uppercase tracking-widest border border-forest/15 rounded-full px-3 py-1 self-start">
                         Our Story
                     </div>
-                    <h2 className="font-sans font-bold text-3xl md:text-4xl text-forest leading-tight">
+                    <h2 className="font-sans font-bold text-2xl sm:text-3xl md:text-4xl text-forest leading-tight">
                         Forged in Dubai,<br />Scaled Globally.
                     </h2>
                     <div className="font-sans text-[15px] text-ink/70 leading-relaxed space-y-4">
@@ -165,13 +168,16 @@ const About = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
 
                 {milestones.map((m, i) => (
-                    <div key={i} className="bento-card bento-element bg-white border border-forest/8 flex flex-col justify-between">
+                    <div key={i} className="bento-card bento-element bg-white border border-forest/8 flex flex-col">
                         <div className="font-mono text-[10px] text-gold uppercase tracking-widest border border-gold/30 rounded-full px-3 py-1 self-start bg-gold/5">
                             {m.year}
                         </div>
-                        <div>
+                        <div className="flex-1 flex flex-col justify-end pt-8">
                             <h3 className="font-sans font-bold text-xl text-forest mb-3">{m.title}</h3>
                             <p className="font-sans text-sm text-ink/60 leading-relaxed">{m.desc}</p>
+                        </div>
+                        <div className="font-mono text-[10px] text-forest/40 uppercase tracking-widest mt-4 min-h-[16px]">
+                            {m.license || ''}
                         </div>
                     </div>
                 ))}
@@ -198,20 +204,21 @@ const About = () => {
                     <div className="font-mono text-[10px] text-forest/50 uppercase tracking-widest mb-4">Leadership</div>
                     <h2 className="font-sans font-bold text-3xl text-forest">Executive<br />Board</h2>
                 </div>
-                {[1, 2].map(item => (
-                    <div key={item} className="bento-card bento-element bg-white border border-forest/8 flex flex-col gap-6">
-                        <div className="h-[200px] bg-cream rounded-[20px] overflow-hidden relative flex items-center justify-center">
-                            <svg width="30%" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" strokeWidth="0.8" opacity="0.2">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 className="font-sans font-bold text-lg text-forest mb-1">Executive Board</h3>
-                            <div className="font-mono text-[11px] text-ink/40 uppercase tracking-widest">DMCC Trading Desk</div>
-                        </div>
+                <div className="bento-card bento-element bg-white border border-forest/8 flex flex-col gap-6">
+                    <div className="h-[200px] bg-cream rounded-[20px] overflow-hidden relative">
+                        <img src={sabareeshImg} alt="Sabareesh Madhavan" className="w-full h-full object-cover object-top" />
                     </div>
-                ))}
+                    <div>
+                        <h3 className="font-sans font-bold text-lg text-forest mb-1">Sabareesh Madhavan</h3>
+                        <div className="font-mono text-[11px] text-ink/40 uppercase tracking-widest mb-3">General Manager</div>
+                        <a href="mailto:sabarish@agronittrade.com" className="font-mono text-[11px] text-forest/60 hover:text-gold transition-colors block">
+                            sabarish@agronittrade.com
+                        </a>
+                        <a href="https://wa.me/971542016446" target="_blank" rel="noopener noreferrer" className="font-mono text-[11px] text-forest/60 hover:text-gold transition-colors block mt-1">
+                            +971 54 201 6446
+                        </a>
+                    </div>
+                </div>
             </div>
 
         </div>

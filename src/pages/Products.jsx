@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight } from 'lucide-react';
@@ -79,16 +79,16 @@ const Products = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
         const ctx = gsap.context(() => {
-            gsap.fromTo('.bento-element',
-                { opacity: 0, y: 40, scale: 0.98 },
-                {
-                    opacity: 1, y: 0, scale: 1,
-                    duration: 0.8,
-                    stagger: 0.1,
-                    ease: 'power3.out',
-                    scrollTrigger: { trigger: gridRef.current, start: 'top 90%' }
-                }
-            );
+            gridRef.current.querySelectorAll('.bento-element').forEach((el) => {
+                gsap.fromTo(el,
+                    { opacity: 0, y: 40, scale: 0.98 },
+                    {
+                        opacity: 1, y: 0, scale: 1,
+                        duration: 0.8, ease: 'power3.out',
+                        scrollTrigger: { trigger: el, start: 'top 90%', once: true }
+                    }
+                );
+            });
         }, gridRef);
 
         // 3D tilt + shine on product cards
@@ -153,7 +153,7 @@ const Products = () => {
                     <div className="absolute inset-0 bg-gradient-to-r from-forest via-forest/90 to-transparent"></div>
                 </div>
                 <div className="relative z-10">
-                    <div className="font-mono text-xs text-sage tracking-widest mb-4 uppercase">Product Catalogue</div>
+                    <div className="font-mono text-[10px] text-sage/70 uppercase tracking-widest border border-sage/30 rounded-full px-3 py-1 self-start inline-block mb-4">Product Catalogue</div>
                     <h1 className="font-sans font-bold text-4xl md:text-5xl text-white leading-tight">
                         Industrial &<br />Specialty Chemicals
                     </h1>

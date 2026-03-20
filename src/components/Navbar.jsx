@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { LogoFull, LogoCompact } from './Logo';
-import { Menu, X } from 'lucide-react';
+import { LogoFull } from './Logo';
+import { X, ArrowUpRight } from 'lucide-react';
 
 const Navbar = ({ activeHash }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -13,7 +13,7 @@ const Navbar = ({ activeHash }) => {
 
     return (
         <>
-            <header className="w-full flex justify-between items-center py-4 mb-4 z-[100] relative">
+            <header className="fixed top-4 left-4 right-4 z-[100] md:relative md:top-auto md:left-auto md:right-auto md:w-full md:flex md:justify-between md:items-center md:py-4 md:mb-4 bg-white/50 backdrop-blur-md rounded-full px-5 py-3 md:bg-transparent md:backdrop-blur-none md:rounded-none md:px-0 md:py-4">
                 <nav className="flex items-center justify-between w-full">
                     {/* Logo */}
                     <a href="#home" className="flex items-center gap-2 group outline-none" onClick={() => setMobileMenuOpen(false)}>
@@ -41,11 +41,15 @@ const Navbar = ({ activeHash }) => {
 
                     {/* Mobile Menu Toggle */}
                     <button
-                        className="md:hidden flex items-center justify-center p-2 rounded-full focus:outline-none"
+                        className="md:hidden flex items-center gap-2 p-2 focus:outline-none text-forest"
                         onClick={() => setMobileMenuOpen(true)}
                         aria-label="Open Menu"
                     >
-                        <Menu className="w-6 h-6" />
+                        <span className="font-mono text-[10px] uppercase tracking-widest">Menu</span>
+                        <svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="0" y1="1" x2="16" y2="1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                            <line x1="0" y1="9" x2="16" y2="9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                        </svg>
                     </button>
                 </nav>
             </header>
@@ -55,35 +59,36 @@ const Navbar = ({ activeHash }) => {
                 onClick={() => setMobileMenuOpen(false)}
             />
             <div
-                className={`fixed top-0 right-0 bottom-0 z-[610] w-[85vw] max-w-sm bg-forest border-l border-sage/10 p-8 flex flex-col transition-transform duration-500 cubic-bezier-[0.25, 0.46, 0.45, 0.94] ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+                className={`fixed top-0 right-0 bottom-0 z-[610] w-[85vw] max-w-sm bg-white border-l border-forest/10 p-8 flex flex-col transition-transform duration-500 cubic-bezier-[0.25, 0.46, 0.45, 0.94] ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
             >
-                <div className="flex justify-between items-center mb-16">
-                    <LogoCompact className="h-10 w-auto text-sage" fill="currentColor" />
+                <div className="flex justify-end items-center mb-16">
                     <button
                         onClick={() => setMobileMenuOpen(false)}
-                        className="p-2 text-sage hover:text-white transition-colors"
+                        className="flex items-center justify-center w-11 h-11 rounded-2xl border border-forest/10 bg-white/60 hover:bg-forest hover:border-forest hover:text-white text-forest transition-all duration-200"
                     >
-                        <X className="w-8 h-8" />
+                        <X className="w-5 h-5" />
                     </button>
                 </div>
 
-                <ul className="flex flex-col gap-8 text-2xl font-garamond italic">
+                <ul className="flex flex-col gap-3">
                     {navLinks.map((link) => (
                         <li key={link.name}>
                             <a
                                 href={link.href}
-                                className="text-white hover:text-gold transition-colors block"
+                                className="flex items-center justify-between px-5 py-4 rounded-2xl border border-forest/10 bg-white/60 hover:bg-forest hover:border-forest hover:text-white text-forest font-sans font-medium text-base transition-all duration-200 group"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 {link.name}
+                                <ArrowUpRight className="w-4 h-4 opacity-30 group-hover:opacity-100 transition-opacity" />
                             </a>
                         </li>
                     ))}
                 </ul>
 
-                <div className="mt-auto pt-8 border-t border-sage/10">
-                    <a href="#contacts" className="btn btn-filled w-full justify-center" onClick={() => setMobileMenuOpen(false)}>
+                <div className="mt-auto pt-8 border-t border-forest/10">
+                    <a href="#contacts" className="flex items-center justify-between px-5 py-4 rounded-2xl border border-forest/10 bg-white/60 hover:bg-forest hover:border-forest hover:text-white text-forest font-sans font-medium text-base transition-all duration-200 group" onClick={() => setMobileMenuOpen(false)}>
                         Contact Us
+                        <ArrowUpRight className="w-4 h-4 opacity-30 group-hover:opacity-100 transition-opacity" />
                     </a>
                 </div>
             </div>
