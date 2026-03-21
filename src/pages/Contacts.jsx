@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, Mail, Phone, MapPin, Clock } from 'lucide-react';
@@ -8,9 +8,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Contacts = () => {
     const gridRef = useRef(null);
-    const [formData, setFormData] = useState({
-        name: '', company: '', email: '', phone: '', product: '', message: ''
-    });
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -60,9 +57,6 @@ const Contacts = () => {
             });
         };
     }, []);
-
-    const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-    const handleSubmit = (e) => { e.preventDefault(); alert('Enquiry submitted successfully.'); };
 
     const inputClass = "bg-transparent border border-forest/20 rounded-xl p-3 font-sans text-sm text-forest placeholder:text-forest/30 focus:outline-none focus:border-forest/60 transition-colors w-full";
 
@@ -143,30 +137,32 @@ const Contacts = () => {
                         </div>
                     </div>
 
-                    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                    <form action="https://formspree.io/f/xzdjqbgo" method="POST" className="flex flex-col gap-5">
+                        <input type="hidden" name="_subject" value="New enquiry from AGRONIT website" />
+                        <input type="hidden" name="_next" value="https://agronittrade.com/thank-you" />
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             <div className="flex flex-col gap-1.5">
                                 <label className="font-mono text-[10px] text-forest/50 uppercase tracking-widest">Full Name *</label>
-                                <input required type="text" name="name" value={formData.name} onChange={handleChange} placeholder="John Smith" className={inputClass} />
+                                <input required type="text" name="fullName" placeholder="John Smith" className={inputClass} />
                             </div>
                             <div className="flex flex-col gap-1.5">
                                 <label className="font-mono text-[10px] text-forest/50 uppercase tracking-widest">Company</label>
-                                <input type="text" name="company" value={formData.company} onChange={handleChange} placeholder="ACME Corp" className={inputClass} />
+                                <input type="text" name="company" placeholder="ACME Corp" className={inputClass} />
                             </div>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             <div className="flex flex-col gap-1.5">
                                 <label className="font-mono text-[10px] text-forest/50 uppercase tracking-widest">Email *</label>
-                                <input required type="email" name="email" value={formData.email} onChange={handleChange} placeholder="john@company.com" className={inputClass} />
+                                <input required type="email" name="email" placeholder="john@company.com" className={inputClass} />
                             </div>
                             <div className="flex flex-col gap-1.5">
                                 <label className="font-mono text-[10px] text-forest/50 uppercase tracking-widest">Phone</label>
-                                <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="+1 000 000 0000" className={inputClass} />
+                                <input type="tel" name="phone" placeholder="+1 000 000 0000" className={inputClass} />
                             </div>
                         </div>
                         <div className="flex flex-col gap-1.5">
                             <label className="font-mono text-[10px] text-forest/50 uppercase tracking-widest">Product of Interest</label>
-                            <select name="product" value={formData.product} onChange={handleChange} className={inputClass + " appearance-none cursor-pointer"}>
+                            <select name="product" className={inputClass + " appearance-none cursor-pointer"}>
                                 <option value="">Select a product...</option>
                                 <option value="caprolactam">Caprolactam</option>
                                 <option value="urea">Urea (Carbamide)</option>
@@ -178,7 +174,7 @@ const Contacts = () => {
                         </div>
                         <div className="flex flex-col gap-1.5">
                             <label className="font-mono text-[10px] text-forest/50 uppercase tracking-widest">Message *</label>
-                            <textarea required name="message" value={formData.message} onChange={handleChange} rows="4" placeholder="Describe your requirements, volumes, and destination markets..." className={inputClass + " resize-none"}></textarea>
+                            <textarea required name="message" rows="4" placeholder="Describe your requirements, volumes, and destination markets..." className={inputClass + " resize-none"}></textarea>
                         </div>
                         <button type="submit" className="btn btn-filled !bg-forest !text-white !border-forest !rounded-[100px] w-full justify-center mt-2">
                             Submit Enquiry
