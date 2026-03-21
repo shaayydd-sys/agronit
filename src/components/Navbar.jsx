@@ -16,7 +16,7 @@ const Navbar = ({ activeHash }) => {
     return (
         <>
             {/* Single expanding card — pill when closed, card when open */}
-            <header className={`fixed top-4 left-4 right-4 z-[200] md:relative md:top-auto md:left-auto md:right-auto md:w-full md:flex md:justify-between md:items-center md:py-4 md:mb-4 md:bg-transparent md:rounded-none md:px-0 md:py-4 px-5 py-3 transition-all duration-300 ${mobileMenuOpen ? 'bg-cream rounded-[24px]' : 'bg-white/60 backdrop-blur-md rounded-full'}`}>
+            <header className={`fixed top-4 left-4 right-4 z-[200] md:relative md:top-auto md:left-auto md:right-auto md:w-full md:flex md:justify-between md:items-center md:py-4 md:mb-4 md:bg-transparent md:rounded-none md:px-0 md:py-4 px-5 py-3 rounded-[24px] transition-colors duration-300 ${mobileMenuOpen ? 'bg-cream' : 'bg-white/60 backdrop-blur-md'}`}>
                 <nav className="flex items-center justify-between w-full">
                     <a href="#home" className="flex items-center gap-2 group outline-none" onClick={close}>
                         <LogoFull className="h-6 md:h-8 w-auto min-w-[100px] text-forest" fill="currentColor" />
