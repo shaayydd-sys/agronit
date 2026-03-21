@@ -15,7 +15,7 @@ const Navbar = ({ activeHash }) => {
 
     return (
         <>
-            <header className="fixed top-4 left-4 right-4 z-[200] md:relative md:top-auto md:left-auto md:right-auto md:w-full md:flex md:justify-between md:items-center md:py-4 md:mb-4 bg-white/60 backdrop-blur-md rounded-full px-5 py-3 md:bg-transparent md:backdrop-blur-none md:rounded-none md:px-0 md:py-4">
+            <header className={`fixed top-4 left-4 right-4 z-[200] md:relative md:top-auto md:left-auto md:right-auto md:w-full md:flex md:justify-between md:items-center md:py-4 md:mb-4 rounded-full px-5 py-3 md:bg-transparent md:rounded-none md:px-0 md:py-4 transition-colors duration-300 ${mobileMenuOpen ? 'bg-cream' : 'bg-white/60 backdrop-blur-md'}`}>
                 <nav className="flex items-center justify-between w-full">
                     {/* Logo */}
                     <a href="#home" className="flex items-center gap-2 group outline-none" onClick={close}>
@@ -59,16 +59,16 @@ const Navbar = ({ activeHash }) => {
                 </nav>
             </header>
 
-            {/* Backdrop */}
+            {/* Backdrop (no blur, just closes on tap) */}
             <div
-                className={`fixed inset-0 z-[150] bg-black/40 backdrop-blur-sm transition-opacity duration-300 md:hidden ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+                className={`fixed inset-0 z-[150] md:hidden ${mobileMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
                 onClick={close}
             />
 
             {/* Dropdown Menu */}
-            <div className={`fixed left-4 right-4 z-[190] md:hidden overflow-hidden transition-all duration-400 ease-out ${mobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+            <div className={`fixed left-4 right-4 z-[190] md:hidden overflow-hidden ${mobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                 style={{ top: '72px', maxHeight: mobileMenuOpen ? '400px' : '0', transition: 'max-height 0.4s ease, opacity 0.25s ease' }}>
-                <div className="bg-white/90 backdrop-blur-md rounded-[24px] border border-forest/10 shadow-xl p-3 flex flex-col gap-2">
+                <div className="bg-cream rounded-[24px] border border-forest/10 shadow-xl p-3 flex flex-col gap-2">
                     {navLinks.map((link) => (
                         <a
                             key={link.name}
