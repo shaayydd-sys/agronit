@@ -70,10 +70,10 @@ const Contacts = () => {
         <div ref={gridRef} className="w-full max-w-[1500px] mx-auto pt-4 flex flex-col gap-4 md:gap-6 lg:gap-8">
 
             {/* Row 1: Hero + Info cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
 
                 {/* Hero card */}
-                <div className="bento-card dark-card bento-element !bg-forest text-white lg:col-span-2 flex flex-col justify-between min-h-[280px] border-none">
+                <div className="bento-card dark-card bento-element !bg-forest text-white md:col-span-2 xl:col-span-2 flex flex-col justify-between min-h-[280px] border-none">
                     <div className="font-mono text-[10px] text-sage/60 uppercase tracking-widest border border-sage/20 rounded-full px-3 py-1 self-start">
                         Get in Touch
                     </div>
@@ -129,10 +129,10 @@ const Contacts = () => {
             </div>
 
             {/* Row 2: Form + Map */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
 
                 {/* Form card */}
-                <div className="bento-card no-tilt bento-element bg-white border border-forest/8 lg:col-span-2">
+                <div className="bento-card no-tilt bento-element bg-white border border-forest/8 xl:col-span-2">
                     <div className="flex items-center justify-between mb-8">
                         <div>
                             <div className="font-mono text-[10px] text-forest/40 uppercase tracking-widest mb-1">Enquiry Form</div>

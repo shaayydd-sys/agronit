@@ -22,8 +22,6 @@ const advantages = [
         color: "bg-white border border-forest/8",
         iconBg: "bg-sage/20",
         iconColor: "text-forest",
-        stat: "500K+",
-        statLabel: "MT / Year",
     },
     {
         Icon: Truck,
@@ -138,10 +136,10 @@ const Home = () => {
 
     return (
         <div ref={gridRef} className="w-full max-w-[1500px] mx-auto flex flex-col gap-4 md:gap-6 lg:gap-8 pt-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:auto-rows-[250px] gap-4 md:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 md:auto-rows-[250px] xl:auto-rows-[300px] gap-4 md:gap-6 lg:gap-8">
 
             {/* Bento 1: Main Hero (Large) span-2 column, span-2 row */}
-            <div className="bento-card dark-card bento-element md:col-span-2 lg:col-span-2 md:row-span-2 !bg-forest text-white flex flex-col justify-between relative group cursor-pointer border-none min-h-[340px] md:min-h-0">
+            <div className="bento-card dark-card bento-element md:col-span-2 xl:col-span-2 md:row-span-2 !bg-forest text-white flex flex-col justify-between relative group cursor-pointer border-none min-h-[340px] md:min-h-0">
                 <div className="absolute inset-0 z-0">
                     <img
                         src={heroBg}
@@ -166,7 +164,7 @@ const Home = () => {
             </div>
 
             {/* Bento 2: Focus Text (Square) */}
-            <div className="bento-card bento-element md:col-span-1 lg:col-span-1 md:row-span-1 bg-cream flex flex-col justify-center items-center text-center group border border-sage/20 relative min-h-[280px] md:min-h-0">
+            <div className="bento-card bento-element md:col-span-1 xl:col-span-1 md:row-span-1 bg-cream flex flex-col justify-center items-center text-center group border border-sage/20 relative min-h-[280px] md:min-h-0">
                 <div className="font-garamond italic text-3xl lg:text-4xl text-forest leading-tight">
                     "We don't move volume. We build supply chains that last."
                 </div>
@@ -176,12 +174,12 @@ const Home = () => {
             </div>
 
             {/* Bento 3: Products Visual (Tall) */}
-            <div className="bento-card bento-element md:col-span-1 lg:col-span-1 md:row-span-2 bg-[#E9C984] text-forest flex flex-col justify-between overflow-hidden relative group cursor-pointer border-none min-h-[280px] md:min-h-0" onClick={() => window.location.hash = '#products'}>
+            <div className="bento-card bento-element md:col-span-1 xl:col-span-1 md:row-span-2 bg-[#E9C984] text-forest flex flex-col justify-between overflow-hidden relative group cursor-pointer border-none min-h-[280px] md:min-h-0" onClick={() => window.location.hash = '#products'}>
                 <div className="absolute inset-0 z-0">
                     <div className="w-[150%] h-[150%] absolute -top-1/4 -right-1/4 bg-white/20 rounded-full blur-3xl group-hover:bg-white/40 transition-colors duration-700"></div>
                 </div>
 
-                <div className="relative z-10 w-full flex items-start justify-between">
+                <div className="relative z-10 w-full flex items-start justify-between gap-3">
                     <div className="font-mono text-[10px] text-forest/70 uppercase tracking-widest border border-forest/20 rounded-full px-3 py-1 bg-white/30 backdrop-blur-sm">Our Capabilities Deck</div>
                     <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center transition-transform duration-500 group-hover:rotate-45 shadow-sm shrink-0">
                         <ArrowUpRight className="w-6 h-6 text-forest" />
@@ -194,33 +192,33 @@ const Home = () => {
             </div>
 
             {/* Bento 4: Reach (Wide/Square) */}
-            <div className="bento-card bento-element md:col-span-2 lg:col-span-1 md:row-span-1 bg-white flex flex-col justify-between group border border-black/5 hover:border-sage/30">
+            <div className="bento-card bento-element md:col-span-2 xl:col-span-1 md:row-span-1 bg-white flex flex-col justify-between group border border-black/5 hover:border-sage/30">
                 <div className="flex justify-between items-start mb-4">
                     <span className="font-mono text-[10px] text-forest/50 uppercase tracking-widest border border-forest/15 rounded-full px-3 py-1">Global Sourcing</span>
                     <Globe2 className="w-6 h-6 text-sage" />
                 </div>
 
                 <div>
-                    <div className="flex items-baseline gap-2 mb-2">
-                        <span className="font-mono text-4xl md:text-5xl text-forest font-bold tracking-tighter stat-num" data-target="12">0+</span>
+                    <div className="flex flex-col mb-1">
+                        <span className="font-mono text-4xl text-forest font-bold tracking-tighter stat-num" data-target="12">0+</span>
                         <span className="font-sans text-sm font-medium text-forest/70">Direct Producers</span>
                     </div>
-                    <div className="w-full h-px bg-gradient-to-r from-sage/30 to-transparent my-4"></div>
-                    <div className="flex items-baseline gap-2">
-                        <span className="font-mono text-4xl md:text-5xl text-forest font-bold tracking-tighter stat-num" data-target="45">0+</span>
+                    <div className="w-full h-px bg-gradient-to-r from-sage/30 to-transparent my-3"></div>
+                    <div className="flex flex-col">
+                        <span className="font-mono text-4xl text-forest font-bold tracking-tighter stat-num" data-target="45">0+</span>
                         <span className="font-sans text-sm font-medium text-forest/70">Active Markets</span>
                     </div>
                 </div>
             </div>
 
             {/* Bento 5: Full-Scale Features */}
-            <div className="bento-card dark-card bento-element md:col-span-2 lg:col-span-2 md:row-span-1 !bg-[#1A2517] text-white flex flex-col justify-end border-none min-h-[280px] md:min-h-0">
+            <div className="bento-card dark-card bento-element md:col-span-2 xl:col-span-2 md:row-span-1 !bg-[#1A2517] text-white flex flex-col justify-end border-none min-h-[280px] md:min-h-0">
                 <h3 className="font-sans font-bold text-3xl md:text-4xl mb-2 text-white">Full-Scale Features</h3>
                 <p className="font-sans text-sm md:text-base text-white/70 max-w-xs">From multimodal transport structuring to flexible credit solutions.</p>
             </div>
 
             {/* Bento 6: CTA (Wide) */}
-            <div className="bento-card bento-element md:col-span-2 lg:col-span-2 md:row-span-1 bg-cream flex flex-col md:flex-row justify-between items-center text-center md:text-left border border-sage/20 overflow-hidden relative">
+            <div className="bento-card bento-element md:col-span-2 xl:col-span-2 md:row-span-1 bg-cream flex flex-col md:flex-row justify-between items-center text-center md:text-left border border-sage/20 overflow-hidden relative">
                 <div className="absolute right-0 bottom-0 pointer-events-none w-64 h-64 bg-gold/10 rounded-full blur-[80px]"></div>
 
                 <h3 className="font-garamond italic font-bold text-3xl sm:text-4xl md:text-5xl text-forest mb-6 md:mb-0 relative z-10">
@@ -242,7 +240,7 @@ const Home = () => {
             {/* Section header */}
             <div className="bento-card dark-card bento-element !bg-forest text-white border-none flex flex-col justify-between min-h-[280px] md:min-h-0">
                 <div className="font-mono text-[10px] text-sage/80 uppercase tracking-widest border border-sage/30 rounded-full px-3 py-1 self-start inline-block">Why Choose Us</div>
-                <div>
+                <div className="mt-8">
                     <h2 className="font-sans font-bold text-4xl md:text-5xl text-white leading-tight mb-3">Our Advantages</h2>
                     <p className="font-sans text-sm text-white/50 max-w-xs leading-relaxed">
                         Six pillars that set AGRONIT apart in the global commodity trade arena.
@@ -251,7 +249,7 @@ const Home = () => {
             </div>
 
             {/* 3×2 advantage cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
                 {advantages.map(({ Icon, title, desc, color, iconBg, iconColor, stat, statLabel, dark }, i) => (
                     <div key={i} className={`advantage-card bento-card bento-element flex flex-col justify-between gap-6 ${color}`}>
                         <div className="flex items-start justify-between">

@@ -6,10 +6,10 @@ const Footer = ({ activeHash }) => {
         <footer className="w-full px-3 sm:px-4 md:px-12 pb-4 md:pb-6 lg:pb-8 pt-4 md:pt-6 lg:pt-8 font-sans">
 
             {/* Bento Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 mb-4 md:mb-6 lg:mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8 mb-4 md:mb-6 lg:mb-8">
 
                 {/* Card 1: Logo + Tagline (dark hero) */}
-                <div className="bento-card dark-card !bg-forest text-white lg:col-span-2 flex flex-col justify-between min-h-[280px] border-none">
+                <div className="bento-card dark-card !bg-forest text-white md:col-span-2 xl:col-span-2 flex flex-col justify-between min-h-[280px] border-none">
                     <LogoFull className="h-7 w-auto text-white" fill="currentColor" />
                     <div>
                         <p className="font-garamond italic text-2xl text-sage leading-snug mb-4">
@@ -61,7 +61,7 @@ const Footer = ({ activeHash }) => {
                 </div>
 
                 {/* Card 4: Contact info (gold accent) */}
-                <div className="bento-card bg-cream border border-sage/20 lg:col-span-2 flex flex-col justify-between min-h-[200px]">
+                <div className="bento-card bg-cream border border-sage/20 md:col-span-2 xl:col-span-2 flex flex-col justify-between min-h-[200px]">
                     <div className="flex items-center justify-between">
                         <div className="font-mono text-[10px] text-forest/50 uppercase tracking-widest border border-forest/15 rounded-full px-3 py-1">
                             Get in Touch
@@ -85,7 +85,7 @@ const Footer = ({ activeHash }) => {
                 </div>
 
                 {/* Card 5: Status + copyright (full width bottom bar styled as card) */}
-                <div className="bento-card bg-white border border-forest/8 lg:col-span-2 flex flex-col md:flex-row items-center justify-between gap-4 min-h-0">
+                <div className="bento-card bg-white border border-forest/8 md:col-span-2 xl:col-span-2 flex flex-col md:flex-row items-center justify-between gap-4 min-h-0">
                     <div className="font-mono text-[10px] text-forest/40 uppercase tracking-widest text-center md:text-left">
                         © 2026 AGRONIT TRADING FZCO — DMCC, Dubai, UAE. All rights reserved.
                     </div>

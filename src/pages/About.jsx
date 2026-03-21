@@ -105,7 +105,7 @@ const About = () => {
             </div>
 
             {/* Row 2: Story + Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
 
                 {/* Story card */}
                 <div className="bento-card bento-element bg-cream border border-sage/20 lg:col-span-2 flex flex-col justify-center gap-4 md:gap-6">
@@ -147,13 +147,7 @@ const About = () => {
 
             {/* Row 3: Values Grid */}
             <div className="bento-element flex flex-col gap-4 md:gap-6">
-                <div className="flex items-end justify-between">
-                    <div>
-                        <div className="font-mono text-[10px] text-forest/40 uppercase tracking-widest mb-2">Our Foundation</div>
-                        <h2 className="font-sans font-bold text-3xl text-forest">Core Values</h2>
-                    </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                     {values.map((val, i) => (
                         <div key={i} className="bento-card dark-card !bg-forest text-white group">
                             <div className="font-mono text-[10px] text-sage/40 mb-6">{val.num}</div>
@@ -165,7 +159,7 @@ const About = () => {
             </div>
 
             {/* Row 4: Milestones + CTA */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
 
                 {milestones.map((m, i) => (
                     <div key={i} className="bento-card bento-element bg-white border border-forest/8 flex flex-col">
@@ -199,7 +193,7 @@ const About = () => {
             </div>
 
             {/* Row 5: Team */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
                 <div className="bento-card bento-element bg-cream border border-sage/20 lg:col-span-1 flex flex-col justify-center">
                     <div className="font-mono text-[10px] text-forest/50 uppercase tracking-widest mb-4">Leadership</div>
                     <h2 className="font-sans font-bold text-3xl text-forest">Executive<br />Board</h2>
