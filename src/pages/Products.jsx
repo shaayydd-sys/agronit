@@ -143,7 +143,7 @@ const Products = () => {
         <div ref={gridRef} className="w-full max-w-[1500px] mx-auto pt-4">
 
             {/* Page Hero Bento */}
-            <div className="bento-card dark-card bento-element !bg-forest text-white mb-6 md:mb-8 flex flex-col md:flex-row items-end justify-between gap-8 relative overflow-hidden min-h-[200px] border-none">
+            <div className="bento-card dark-card bento-element !bg-forest text-white mb-6 md:mb-8 flex flex-col md:flex-row items-start md:items-end justify-between gap-8 relative overflow-hidden min-h-[200px] border-none">
                 <div className="absolute inset-0 z-0">
                     <img
                         src="https://images.unsplash.com/photo-1549463991-bebd0a08fc23?q=80&w=2832&auto=format&fit=crop"
