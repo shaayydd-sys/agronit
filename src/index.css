@@ -251,6 +251,16 @@
   opacity: 0.2;
 }
 
+/* Disable hover shadows on touch/mobile devices (up to 800px) */
+@media (max-width: 800px) {
+  .bento-card:hover,
+  .bento-card.dark-card:hover,
+  .card:hover,
+  .tilt-card:hover {
+    box-shadow: none;
+  }
+}
+
 /* GSAP utility class to start hidden before animation kicks in */
 .gsap-reveal {
   opacity: 0;
