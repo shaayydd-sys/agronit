@@ -62,7 +62,7 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-screen items-center justify-center p-0 md:p-4 lg:p-8 w-full relative">
-      <div className="w-full max-w-[1600px] bg-white rounded-none md:rounded-[32px] lg:rounded-[48px] shadow-none md:shadow-2xl flex flex-col flex-grow overflow-hidden relative border-0 md:border md:border-black/5">
+      <div className="w-full max-w-[1600px] bg-white rounded-none md:rounded-[32px] lg:rounded-[48px] shadow-none md:shadow-2xl flex flex-col flex-grow md:overflow-hidden relative border-0 md:border md:border-black/5">
         <div className="md:px-12 md:pt-10 z-50">
           <Navbar activeHash={displayHash} />
         </div>
