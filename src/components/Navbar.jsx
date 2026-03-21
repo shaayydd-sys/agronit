@@ -55,13 +55,13 @@ const Navbar = ({ activeHash }) => {
             </header>
             {/* Mobile Drawer */}
             <div
-                className={`fixed inset-0 z-[600] bg-forest/40 backdrop-blur-sm transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+                className={`fixed inset-0 z-[600] bg-black/60 backdrop-blur-md transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
                 onClick={() => setMobileMenuOpen(false)}
             />
             <div
-                className={`fixed top-0 right-0 bottom-0 z-[610] w-[85vw] max-w-sm bg-white border-l border-forest/10 p-8 flex flex-col transition-transform duration-500 cubic-bezier-[0.25, 0.46, 0.45, 0.94] ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+                className={`fixed top-0 right-0 z-[610] w-[85vw] max-w-sm bg-white border-l border-forest/10 p-8 flex flex-col transition-transform duration-500 h-[100dvh] ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
             >
-                <div className="flex justify-end items-center mb-16">
+                <div className="flex justify-end items-center mb-8">
                     <button
                         onClick={() => setMobileMenuOpen(false)}
                         className="flex items-center justify-center w-11 h-11 rounded-2xl border border-forest/10 bg-white/60 hover:bg-forest hover:border-forest hover:text-white text-forest transition-all duration-200"
@@ -86,9 +86,9 @@ const Navbar = ({ activeHash }) => {
                 </ul>
 
                 <div className="mt-auto pt-8 border-t border-forest/10">
-                    <a href="#contacts" className="flex items-center justify-between px-5 py-4 rounded-2xl border border-forest/10 bg-white/60 hover:bg-forest hover:border-forest hover:text-white text-forest font-sans font-medium text-base transition-all duration-200 group" onClick={() => setMobileMenuOpen(false)}>
+                    <a href="#contacts" className="flex items-center justify-between px-5 py-4 rounded-2xl bg-forest text-white font-sans font-medium text-base transition-all duration-200 group hover:bg-forest/80" onClick={() => setMobileMenuOpen(false)}>
                         Contact Us
-                        <ArrowUpRight className="w-4 h-4 opacity-30 group-hover:opacity-100 transition-opacity" />
+                        <ArrowUpRight className="w-4 h-4 opacity-60 group-hover:opacity-100 transition-opacity" />
                     </a>
                 </div>
             </div>
