@@ -15,9 +15,9 @@ const Navbar = ({ activeHash }) => {
 
     return (
         <>
-            <header className={`fixed top-4 left-4 right-4 z-[200] md:relative md:top-auto md:left-auto md:right-auto md:w-full md:flex md:justify-between md:items-center md:py-4 md:mb-4 rounded-full px-5 py-3 md:bg-transparent md:rounded-none md:px-0 md:py-4 transition-colors duration-300 ${mobileMenuOpen ? 'bg-cream' : 'bg-white/60 backdrop-blur-md'}`}>
+            {/* Single expanding card — pill when closed, card when open */}
+            <header className={`fixed top-4 left-4 right-4 z-[200] md:relative md:top-auto md:left-auto md:right-auto md:w-full md:flex md:justify-between md:items-center md:py-4 md:mb-4 md:bg-transparent md:rounded-none md:px-0 md:py-4 px-5 py-3 transition-all duration-300 ${mobileMenuOpen ? 'bg-cream rounded-[24px]' : 'bg-white/60 backdrop-blur-md rounded-full'}`}>
                 <nav className="flex items-center justify-between w-full">
-                    {/* Logo */}
                     <a href="#home" className="flex items-center gap-2 group outline-none" onClick={close}>
                         <LogoFull className="h-6 md:h-8 w-auto min-w-[100px] text-forest" fill="currentColor" />
                     </a>
@@ -41,7 +41,7 @@ const Navbar = ({ activeHash }) => {
                         </a>
                     </div>
 
-                    {/* Mobile Menu Toggle */}
+                    {/* Mobile Toggle */}
                     <button
                         className="md:hidden flex items-center gap-2 p-2 focus:outline-none text-forest"
                         onClick={() => setMobileMenuOpen(o => !o)}
@@ -57,39 +57,38 @@ const Navbar = ({ activeHash }) => {
                         </svg>
                     </button>
                 </nav>
+
+                {/* Dropdown inside the header card */}
+                <div className="md:hidden overflow-hidden" style={{ maxHeight: mobileMenuOpen ? '400px' : '0', transition: 'max-height 0.4s ease' }}>
+                    <div className="flex flex-col gap-2 pt-3">
+                        {navLinks.map((link) => (
+                            <a
+                                key={link.name}
+                                href={link.href}
+                                className="flex items-center justify-between px-4 py-3 rounded-2xl border border-forest/10 hover:bg-forest hover:border-forest hover:text-white text-forest font-sans font-medium text-sm transition-all duration-200 group"
+                                onClick={close}
+                            >
+                                {link.name}
+                                <ArrowUpRight className="w-3.5 h-3.5 opacity-30 group-hover:opacity-100 transition-opacity" />
+                            </a>
+                        ))}
+                        <a
+                            href="#contacts"
+                            className="flex items-center justify-between px-4 py-3 rounded-2xl bg-forest text-white font-sans font-medium text-sm transition-all duration-200 group hover:bg-forest/80"
+                            onClick={close}
+                        >
+                            Contact Us
+                            <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" />
+                        </a>
+                    </div>
+                </div>
             </header>
 
-            {/* Backdrop (no blur, just closes on tap) */}
+            {/* Backdrop */}
             <div
                 className={`fixed inset-0 z-[150] md:hidden ${mobileMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
                 onClick={close}
             />
-
-            {/* Dropdown Menu */}
-            <div className={`fixed left-4 right-4 z-[190] md:hidden overflow-hidden ${mobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-                style={{ top: '72px', maxHeight: mobileMenuOpen ? '400px' : '0', transition: 'max-height 0.4s ease, opacity 0.25s ease' }}>
-                <div className="bg-cream rounded-[24px] border border-forest/10 shadow-xl p-3 flex flex-col gap-2">
-                    {navLinks.map((link) => (
-                        <a
-                            key={link.name}
-                            href={link.href}
-                            className="flex items-center justify-between px-4 py-3 rounded-2xl border border-forest/8 hover:bg-forest hover:border-forest hover:text-white text-forest font-sans font-medium text-sm transition-all duration-200 group"
-                            onClick={close}
-                        >
-                            {link.name}
-                            <ArrowUpRight className="w-3.5 h-3.5 opacity-30 group-hover:opacity-100 transition-opacity" />
-                        </a>
-                    ))}
-                    <a
-                        href="#contacts"
-                        className="flex items-center justify-between px-4 py-3 rounded-2xl bg-forest text-white font-sans font-medium text-sm transition-all duration-200 group hover:bg-forest/80 mt-1"
-                        onClick={close}
-                    >
-                        Contact Us
-                        <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" />
-                    </a>
-                </div>
-            </div>
         </>
     );
 };
