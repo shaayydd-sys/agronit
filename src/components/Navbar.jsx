@@ -59,7 +59,7 @@ const Navbar = ({ activeHash }) => {
                 onClick={() => setMobileMenuOpen(false)}
             />
             <div
-                className={`fixed top-0 right-0 z-[610] w-[85vw] max-w-sm bg-white border-l border-forest/10 p-8 flex flex-col transition-transform duration-500 h-[100dvh] rounded-l-[32px] ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+                className={`fixed inset-y-0 right-0 z-[610] w-[85vw] max-w-sm bg-white border-l border-forest/10 p-8 flex flex-col transition-transform duration-500 rounded-l-[32px] ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
             >
                 <div className="flex justify-end items-center mb-8">
                     <button
