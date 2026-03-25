@@ -90,7 +90,7 @@ const Contacts = () => {
                         <div className="font-mono text-[10px] text-forest/40 uppercase tracking-widest mb-3">Registered Office</div>
                         <div className="font-sans text-sm font-medium text-forest leading-relaxed">
                             AGRONIT TRADING FZCO<br />
-                            Unit 2208, GBC2<br />
+                            Unit 2208, JBC2<br />
                             Jumeirah Lakes Towers (JLT), DMCC<br />
                             Dubai, UAE
                         </div>

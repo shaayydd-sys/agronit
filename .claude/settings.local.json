@@ -1,7 +1,18 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(cp \"C:/Users/damir/Downloads/favicon_io \\(1\\)/favicon.ico\" \"c:/Users/damir/Documents/AGRONIT/public/favicon.ico\")",
+      "Bash(cp \"C:/Users/damir/Downloads/favicon_io \\(1\\)/favicon-16x16.png\" \"c:/Users/damir/Documents/AGRONIT/public/favicon-16x16.png\")",
+      "Bash(cp \"C:/Users/damir/Downloads/favicon_io \\(1\\)/favicon-32x32.png\" \"c:/Users/damir/Documents/AGRONIT/public/favicon-32x32.png\")",
+      "Bash(cp \"C:/Users/damir/Downloads/favicon_io \\(1\\)/apple-touch-icon.png\" \"c:/Users/damir/Documents/AGRONIT/public/apple-touch-icon.png\")",
+      "Bash(cp \"C:/Users/damir/Downloads/favicon_io \\(1\\)/android-chrome-192x192.png\" \"c:/Users/damir/Documents/AGRONIT/public/android-chrome-192x192.png\")",
+      "Bash(cp \"C:/Users/damir/Downloads/favicon_io \\(1\\)/android-chrome-512x512.png\" \"c:/Users/damir/Documents/AGRONIT/public/android-chrome-512x512.png\")",
+      "Bash(cp \"C:/Users/damir/Downloads/favicon_io \\(1\\)/site.webmanifest\" \"c:/Users/damir/Documents/AGRONIT/public/site.webmanifest\")",
+      "Bash(ls \"C:/Users/damir/Downloads/favicon_io \\(11\\)\")"
     ]
   }
 }
