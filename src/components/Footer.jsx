@@ -67,7 +67,7 @@ const Footer = ({ activeHash }) => {
                             Get in Touch
                         </div>
                         {activeHash !== '#contacts' && (
-                            <a href="#contacts" className="w-9 h-9 rounded-full bg-white flex items-center justify-center hover:bg-forest group transition-colors">
+                            <a href="#contacts" className="w-9 h-9 rounded-full bg-white flex items-center justify-center hover:bg-forest group transition-all duration-500 hover:rotate-45">
                                 <ArrowUpRight className="w-4 h-4 text-forest group-hover:text-white transition-colors" />
                             </a>
                         )}

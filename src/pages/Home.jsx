@@ -139,7 +139,7 @@ const Home = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 md:auto-rows-[250px] xl:auto-rows-[300px] gap-4 md:gap-6 lg:gap-8">
 
             {/* Bento 1: Main Hero (Large) span-2 column, span-2 row */}
-            <div className="bento-card dark-card bento-element md:col-span-2 xl:col-span-2 md:row-span-2 !bg-forest text-white flex flex-col justify-between relative group cursor-pointer border-none min-h-[340px] md:min-h-0">
+            <a href="#products" className="bento-card dark-card bento-element md:col-span-2 xl:col-span-2 md:row-span-2 !bg-forest text-white flex flex-col justify-between relative group cursor-pointer border-none min-h-[340px] md:min-h-0">
                 <div className="absolute inset-0 z-0">
                     <img
                         src={heroBg}
@@ -161,7 +161,7 @@ const Home = () => {
                         </div>
                     </a>
                 </div>
-            </div>
+            </a>
 
             {/* Bento 2: Focus Text (Square) */}
             <div className="bento-card bento-element md:col-span-1 xl:col-span-1 md:row-span-1 bg-cream flex flex-col justify-center items-center text-center group border border-sage/20 relative min-h-[280px] md:min-h-0">
@@ -181,8 +181,8 @@ const Home = () => {
 
                 <div className="relative z-10 w-full flex items-start justify-between gap-3">
                     <div className="font-mono text-[10px] text-forest/70 uppercase tracking-widest border border-forest/20 rounded-full px-3 py-1 bg-white/30 backdrop-blur-sm">Our Capabilities Deck</div>
-                    <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center transition-transform duration-500 group-hover:rotate-45 shadow-sm shrink-0">
-                        <ArrowUpRight className="w-6 h-6 text-forest" />
+                    <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center transition-all duration-500 group-hover:rotate-45 group-hover:bg-forest shadow-sm shrink-0">
+                        <ArrowUpRight className="w-6 h-6 text-forest group-hover:text-white transition-colors duration-500" />
                     </div>
                 </div>
                 <div className="relative z-10 w-full">

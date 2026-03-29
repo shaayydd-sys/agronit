@@ -168,7 +168,7 @@ const Products = () => {
                 {productData.map((product, index) => (
                     <div
                         key={index}
-                        className={`tilt-card bento-element group relative overflow-hidden rounded-[32px] md:rounded-[40px] cursor-pointer flex flex-col ${index === 0 ? 'md:col-span-2 lg:col-span-2' : ''
+                        className={`tilt-card bento-element group relative overflow-hidden rounded-[32px] md:rounded-[40px] flex flex-col ${index === 0 ? 'md:col-span-2 lg:col-span-2' : ''
                             }`}
                     >
                         {/* Image */}
